@@ -1,0 +1,7 @@
+set(SOURCE_FILES_PMJ pmj.h pmj.cpp)
+
+ADD_LIBRARY(pmj STATIC ${SOURCE_FILES_PMJ})
+
+if(NOT MSVC)
+    set_property(TARGET pmj PROPERTY POSITION_INDEPENDENT_CODE ON)
+endif()

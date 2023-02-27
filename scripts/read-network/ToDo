@@ -1,0 +1,2 @@
+- Run Valgrind to solve memory leaks
+- Convert the coordinates do double-arrays
