@@ -19,7 +19,6 @@
 #include "../ini_parser/ini_file_sections.h"
 
 #include "cost_function_config.h"
-#include "local_optimization_config.h"
 #include "pmj_config.h"
 #include "cloud_config.h"
 

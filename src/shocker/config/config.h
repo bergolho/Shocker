@@ -15,7 +15,6 @@
 #include "../../utils/utils.h"
 
 #include "../cost_function/cost_function.h"
-#include "../local_optimization/local_optimization.h"
 
 // Parameters of the model
 class Config

@@ -83,12 +83,12 @@ bool CostFunction::check_restrictions (std::vector<Segment*> s_list, Segment *ib
 {
     assert(ibiff->is_bifurcation());
 
-    // Check bifurcation size and angle
+    // ADD RESTRICTION: Check bifurcation size and angle
     Segment *iconn = ibiff->right;
     Segment *inew = ibiff->left;
     //bool has_angle_requirement = check_angle_restriction(iconn,inew);
     
-    // Check segment sizes
+    // ADD RESTRICTION: Check segment sizes
     //bool has_minimum_segment_size = check_minimum_segment_size(ibiff);
     //bool has_maximum_segment_size = check_maximum_segment_size(ibiff);
 

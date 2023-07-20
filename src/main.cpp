@@ -1,13 +1,20 @@
-// ========================================================
+// =============================================================================
 // Author: Lucas Berg
-// ========================================================
-// Shocker: A program to generate Purkinje networks.
-// ........................................................
+// Last changed: 19/07/2023
+// =============================================================================
+// Shocker: A program to generate patient-specific Purkinje networks.
+// ........................................................,,,,,,,,,,,,,,,,,,,,,
 // Compile:
 //      $ ./recompile_project.sh
 // Execute:
-//      $ ./bin/Shocker inputs/benchmark_2d.ini
-// ========================================================
+//      $ ./bin/Shocker inputs/simplified_LV.ini
+//   or
+//      $ ./bin/Shocker inputs/simplified_RV.ini
+// ........................................................,,,,,,,,,,,,,,,,,,,,,
+// To merge the generated LV and RV into an LVRV the user needs to manually
+// construct a His-Bundle in .vtk format. There is an example for the Simplified
+// mesh inside the "/scripts/merge-network" folder.
+// =============================================================================
 
 #include <iostream>
 #include <cstdio>

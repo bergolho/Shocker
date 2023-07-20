@@ -36,12 +36,12 @@ To run a simulation you need to pass a configuration file as input. There are so
 
 Generate a Purkinje network in the LV surface.
 ```sh
-./bin/Shocker inputs/finsberg_LV.ini
+./bin/Shocker inputs/simplified_LV.ini
 ```
 
 Generate a Purkinje network in the RV surface.
 ```sh
-./bin/Shocker inputs/finsberg_RV.ini
+./bin/Shocker inputs/simplified_RV.ini
 ```
 
 The output files are stored in the ```outputs``` folder. Remember to create this folder before running a simulation. 
@@ -51,3 +51,10 @@ The program generates a Purkinje network that connects the active Purkinje-Ventr
 ![Screenshot](figs/shocker_snapshot_1.png)
 
 ![Screenshot](figs/shocker_snapshot_2.png)
+
+## How to cite this work
+----
+
+Berg, L. A, Rocha, B. M., Oliveira, R. S., Sebastian, R., Rodriguez, B., de Queiroz, R. A. B., Cherry, E. M., dos Santos, R. W. Enhanced optimization-based method for the generation of patient-specific models of Purkinje networks. Nature Scientific Reports. https://www.doi.org/10.1038/s41598-023-38653-1
+
+

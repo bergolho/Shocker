@@ -67,13 +67,8 @@ void Shocker::grow ()
     // Grow the Purkinje network
     grow_tree_using_cloud_points();
 
-    //extract_connected_pmjs();
-
     // Pos-processing
     pos_process();    // Prune and write minimum tree     
-
-    // Final refinement
-    //refinement_attempt_diameter_adjustment();
 
     long res_time = stop_stop_watch(&solver_time);
 	double conv_rate = 1000.0*1000.0*60.0;
@@ -125,9 +120,6 @@ void Shocker::grow_tree_using_cloud_points ()
     {
         std::cout << get_color_code(GRAY) << PRINT_LINE << std::endl;
         std::cout << get_color_code(GRAY) << "[shocker] Working on terminal number " << this->params->num_terminals+1 << std::endl;
-
-        //double l_min = calc_lmin(this->params->l_d,this->params->num_terminals);
-        //this->logger->write_lmin_to_file(this->params->output_dir,this->params->num_terminals,l_min);
 
         // Generate a new terminal point in the network
         if (!using_pmj_location)

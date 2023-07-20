@@ -37,7 +37,6 @@
 #include "../../options/cloud_config.h"
 #include "../../options/pmj_config.h"
 #include "../../utils/utils.h"
-#include "../kdtree/KDTree.hpp"
 
 #include "point.h"
 #include "pmj.h"

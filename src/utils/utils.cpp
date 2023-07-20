@@ -207,155 +207,6 @@ bool collision_detection (const double x1, const double y1, const double z1,\
         return false;
 }
 
-/*
-bool read_points_from_vtk (const char filename[], std::vector<Point*> &points)
-{
-    char str[MAX_FILENAME_SIZE];
-    FILE *file = fopen(filename,"r");
-
-    while (fscanf(file,"%s",str) != EOF)
-        if (strcmp(str,"POINTS") == 0) break;
-    
-    // Read the POINTS section
-    uint32_t num_points;
-    fscanf(file,"%u %s",&num_points,str);
-    for (uint32_t i = 0; i < num_points; i++)
-    {
-        double pos[3];
-        fscanf(file,"%lf %lf %lf",&pos[0],&pos[1],&pos[2]);
-        Point *point = new Point(i,pos);
-        points.push_back(point);
-    }
-
-    int trash[2];
-    fscanf(file,"%s %d %d",str,&trash[0],&trash[1]);
-
-    // Read the VERTICES section
-    for (uint32_t i = 0; i < num_points; i++)
-    {
-        uint32_t vertex[2];
-        fscanf(file,"%u %u",&vertex[0],&vertex[1]);
-    }
-
-    // Check if there is POINT_DATA section in the file
-    int is_eof = fscanf(file,"%s",str);
-    if ( is_eof != EOF && strcmp(str,"POINT_DATA") == 0 )
-    {
-        while (fscanf(file,"%s",str) != EOF)
-            if (strcmp(str,"float") == 0) break;
-        
-        for (uint32_t i = 0; i < num_points; i++)
-        {
-            double value;
-            fscanf(file,"%lf",&value);
-            points[i]->setLAT(value);
-        }
-
-        while (fscanf(file,"%s",str) != EOF)
-            if (strcmp(str,"float") == 0) break;
-        
-        for (uint32_t i = 0; i < num_points; i++)
-        {
-            int value;
-            fscanf(file,"%d",&value);
-            points[i]->setActive(value);
-        }
-    }
-
-    fclose(file);
-
-    return true;
-}
-
-bool write_points_to_vtk (std::string filename, std::vector<Point*> input_points)
-{
-    uint32_t num_points = input_points.size();
-    FILE *file = fopen(filename.c_str(),"w+");
-
-    fprintf(file,"# vtk DataFile Version 4.1\n");
-    fprintf(file,"vtk output\n");
-    fprintf(file,"ASCII\n");
-    fprintf(file,"DATASET POLYDATA\n");
-    fprintf(file,"POINTS %u float\n",num_points);
-    for (uint32_t i = 0; i < num_points; i++)
-        fprintf(file,"%g %g %g\n",input_points[i]->pos[0],input_points[i]->pos[1],input_points[i]->pos[2]);
-    fprintf(file,"VERTICES %u %u\n",num_points,num_points*2);
-    for (uint32_t i = 0; i < num_points; i++)
-        fprintf(file,"1 %u\n",i);
-    fprintf(file,"POINT_DATA %u\n",num_points);
-    fprintf(file,"FIELD FieldData 1\n");
-    fprintf(file,"ClosestPMJ 1 %u float\n",num_points);
-    for (uint32_t i = 0; i < num_points; i++)
-    {
-        if (input_points[i]->closest_pmj)
-            fprintf(file,"%u\n",input_points[i]->closest_pmj->id);
-        else
-            fprintf(file,"-1\n");
-    }
-    fclose(file);
-
-    return true;
-}
-
-bool read_pmjs_from_vtk (const char filename[], std::vector<PMJ*> &pmjs)
-{
-    char str[MAX_FILENAME_SIZE];
-    FILE *file = fopen(filename,"r");
-
-    while (fscanf(file,"%s",str) != EOF)
-        if (strcmp(str,"POINTS") == 0) break;
-    
-    // Read the POINTS section
-    uint32_t num_points;
-    fscanf(file,"%u %s",&num_points,str);
-    for (uint32_t i = 0; i < num_points; i++)
-    {
-        double pos[3];
-        fscanf(file,"%lf %lf %lf",&pos[0],&pos[1],&pos[2]);
-        PMJ *pmj = new PMJ(i,pos);
-        pmjs.push_back(pmj);
-    }
-
-    int trash[2];
-    fscanf(file,"%s %d %d",str,&trash[0],&trash[1]);
-
-    // Read the VERTICES section
-    for (uint32_t i = 0; i < num_points; i++)
-    {
-        uint32_t vertex[2];
-        fscanf(file,"%u %u",&vertex[0],&vertex[1]);
-    }
-
-    // Check if there is POINT_DATA section in the file
-    int is_eof = fscanf(file,"%s",str);
-    if ( is_eof != EOF && strcmp(str,"POINT_DATA") == 0 )
-    {
-        while (fscanf(file,"%s",str) != EOF)
-            if (strcmp(str,"float") == 0) break;
-        
-        for (uint32_t i = 0; i < num_points; i++)
-        {
-            double value;
-            fscanf(file,"%lf",&value);
-            pmjs[i]->ref_value = value;
-        }
-
-        while (fscanf(file,"%s",str) != EOF)
-            if (strcmp(str,"float") == 0) break;
-        
-        for (uint32_t i = 0; i < num_points; i++)
-        {
-            int value;
-            fscanf(file,"%d",&value);
-        }
-    }
-    
-    fclose(file);
-
-    return true;
-}
-*/
-
 bool check_user_input (int argc, char *argv[])
 {
     int num_networks = argc-1;
@@ -400,18 +251,19 @@ std::string get_color_code (const int color)
 
 void usage (const char pname[])
 {
-    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("%s\n", LINE_2.c_str());
     printf("Usage:> %s <input_config>\n",pname);
-    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    printf("Example:> %s inputs/benchmark_2d.ini\n",pname);
-    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");        
+    printf("%s\n", LINE_2.c_str());
+    printf("Example:> %s inputs/simplified_LV.ini\n",pname);
+    printf("%s\n", LINE_2.c_str());        
 }
 
+// TODO: Future projects ...
 void usage_multiple_network (const char pname[])
 {
-    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("%s\n", LINE_2.c_str());
     printf("Usage:> %s [list_of_input_config] <output_dir>\n",pname);
-    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("%s\n", LINE_2.c_str());
     printf("Example:> %s inputs/benchmark_3d_cuboid_north.ini inputs/benchmark_3d_cuboid_east.ini inputs/benchmark_3d_cuboid_west.ini outputs/benchmark3d:cuboid\n",pname);
-    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("%s\n", LINE_2.c_str());
 }
