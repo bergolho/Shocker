@@ -26,7 +26,7 @@ $ sudo dnf install paraview
 
 ## Compile and run
 
-To compile the source code you can use the available script. This will generate a binary executable inside the ``bin`` folder.
+To compile the source code you can use the available script.
 
 ```sh
 $ ./recompile_project.sh
